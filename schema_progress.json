@@ -1,0 +1,172 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "student": {
+        "type": "object",
+        "properties": {
+          "student_id": {
+            "type": "integer",
+            "description": "The unique identifier for student"
+          },
+          "parent_id": {
+            "type": "integer",
+            "description": "The unique identifier for parent"
+          },
+          "f_name": {
+            "type": "string",
+            "description": "first name"
+          },
+          "m_name": {
+            "type": "string",
+            "description": "middle name"
+          },
+          "l_name": {
+            "type": "string",
+            "description": "last name"
+          },
+          "gender": {
+            "type": "string"
+          },
+          "dob": {
+            "type": "string"
+          },
+          "contact": {
+            "type": "object",
+            "properties": {
+              "phone": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "address": {
+                "type": "object"
+              }
+            },
+            "required": [
+              "phone",
+              "email",
+              "address"
+            ]
+          }
+        },
+        "required": [
+          "student_id",
+          "parent_id",
+          "f_name",
+          "l_name",
+          "gender",
+          "dob",
+          "contact"
+        ]
+      },
+      "employee": {
+        "type": "object",
+        "properties": {
+          "employee_id": {
+            "type": "integer",
+            "description":"employee Id"
+          },
+          "f_name": {
+            "type": "string",
+            "description": "first name"
+          },
+          "m_name": {
+            "type": "string",
+            "description":"middle name"
+          },
+          "l_name": {
+            "type": "string",
+            "description": "last name"
+          },
+          "dob": {
+            "type": "string",
+            "description":"Employee date of birth"
+          },
+          "gender": {
+            "type": "string",
+            "description": "Employee gender"
+          },
+          "contact": {
+            "type": "object",
+            "properties": {
+              "phone": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "address": {
+                "type": "object"
+              }
+            },
+            "required": [
+              "phone",
+              "email",
+              "address"
+            ]
+          }
+        },
+        "required": [
+          "employee_id",
+          "f_name",
+          "l_name",
+          "dob",
+          "gender",
+          "contact"
+        ]
+      },
+      "parent": {
+        "type": "object",
+        "properties": {
+          "parent_id": {
+            "type": "string",
+            "description": "Unique parent identifier"
+          },
+          "f_name": {
+            "type": "string",
+            "description":"first name"
+          },
+          "m_name": {
+            "type": "string",
+            "description":"middle name"
+          },
+          "l_name": {
+            "type": "string",
+            "description":"last name"
+          },
+          "contact": {
+            "type": "object",
+            "properties": {
+              "phone": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "address": {
+                "type": "object"
+              }
+            },
+            "required": [
+              "phone",
+              "email",
+              "address"
+            ]
+          }
+        },
+        "required": [
+          "parent_id",
+          "f_name",
+          "l_name",
+          "contact"
+        ]
+      }
+    },
+    "required": [
+      "student",
+      "employee",
+      "parent"
+    ]
+  }
