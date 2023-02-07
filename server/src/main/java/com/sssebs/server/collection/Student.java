@@ -1,11 +1,13 @@
-package com.sssebs.server.model;
+package com.sssebs.server.collection;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Date;
+import java.util.Collection;
 
-@Document("students")
+@Document(collection = "students")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Student {
     @Id
     private String student_id;
