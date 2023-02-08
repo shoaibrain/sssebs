@@ -1,0 +1,28 @@
+package com.sssebs.server.model;
+
+/*
+* Breakdown of the Roles of School Personnel
+* */
+public enum EmployeeType {
+    BOARD,
+    SCHOOL_LEADER,
+    PRINCIPAL,
+    ASSISTANT_PRINCIPAL,
+    ACCOUNTANT,
+    TEACHER,
+    COUNSELOR,
+    SPECIAL_EDUCATION,
+    SPEECH_THERAPIST,
+    OCCUPATIONAL_THERAPIST,
+    PHYSICAL_THERAPIST,
+    ALTERNATIVE_EDUCATION,
+    MEDIA_SPECIALIST,
+    COACH,
+    ASSISTANT_COACH,
+    SUPPORT_STAFF,
+    COOK,
+    MAINTENANCE,
+    COMPUTER_TECHNICIAN,
+    BUS_DRIVER
+
+}
