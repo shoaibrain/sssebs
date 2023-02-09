@@ -3,6 +3,7 @@ package com.sssebs.server.controller;
 import com.sssebs.server.model.Student;
 import com.sssebs.server.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,15 +11,20 @@ import java.util.Map;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/students")
+@RequestMapping("/api/v1/students")
 public class StudentController {
 
     @Autowired
     private StudentService studentService;
 
-    @RequestMapping("/")
-    public List<Student> getAllStudent() {
-    return studentService.getAll();
+//    @RequestMapping("/")
+//    public List<Student> getAllStudent() {
+//    return studentService.getAll();
+//    }
+
+    @GetMapping
+    public ResponseEntity<String> sayHello () {
+        return ResponseEntity.ok("Hello from secured endpoint");
     }
 
     @RequestMapping(method = RequestMethod.POST, value="/")
