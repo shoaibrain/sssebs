@@ -2,6 +2,8 @@ package com.sssebs.server.service;
 
 import com.sssebs.server.model.Employee;
 import com.sssebs.server.repository.EmployeeRepository;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
@@ -13,13 +15,14 @@ import java.util.Optional;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService{
-
+    private static Logger LOG = LogManager.getRootLogger();
     @Autowired
     private EmployeeRepository employeeRepository;
 
 
     @Override
     public List<Employee> getAll() {
+
         return employeeRepository.findAll();
     }
 
