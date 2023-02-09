@@ -3,7 +3,6 @@ package com.sssebs.server.controller;
 import com.sssebs.server.model.Student;
 import com.sssebs.server.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,15 +16,11 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
-//    @RequestMapping("/")
-//    public List<Student> getAllStudent() {
-//    return studentService.getAll();
-//    }
-
-    @GetMapping
-    public ResponseEntity<String> sayHello () {
-        return ResponseEntity.ok("Hello from secured endpoint");
+    @RequestMapping("/")
+    public List<Student> getAllStudent() {
+    return studentService.getAll();
     }
+
 
     @RequestMapping(method = RequestMethod.POST, value="/")
     public void addStudent(@RequestBody Student student) {

@@ -20,7 +20,7 @@ import java.util.List;
 public class User implements UserDetails {
 
     @Id
-    private String id;
+    private String id; //TODO get auto increment to work
     private String firstname;
     private String lastname;
     private String email;

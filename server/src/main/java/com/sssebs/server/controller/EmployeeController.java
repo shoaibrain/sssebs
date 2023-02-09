@@ -1,7 +1,6 @@
 package com.sssebs.server.controller;
 
 import com.sssebs.server.model.Employee;
-import com.sssebs.server.model.Parent;
 import com.sssebs.server.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +10,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/employees")
+@RequestMapping("/api/v1/employees")
 public class EmployeeController {
     @Autowired
     EmployeeService employeeService;
