@@ -6,6 +6,8 @@ import com.sssebs.server.model.User;
 import com.sssebs.server.repository.UserRepository;
 import com.sssebs.server.service.DbSequenceGeneratorService;
 import lombok.RequiredArgsConstructor;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -16,11 +18,11 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AuthenticationService {
 
+    private static Logger logger = LogManager.getLogger(AuthenticationService.class);
     @Autowired
     private UserRepository userRepository;
     @Autowired
     private DbSequenceGeneratorService sequenceGeneratorService;
-
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;

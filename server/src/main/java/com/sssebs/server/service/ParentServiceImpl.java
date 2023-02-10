@@ -2,6 +2,8 @@ package com.sssebs.server.service;
 
 import com.sssebs.server.model.Parent;
 import com.sssebs.server.repository.ParentRepository;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,7 @@ import java.util.Optional;
 
 @Service
 public class ParentServiceImpl implements ParentService{
+    private static Logger logger = LogManager.getLogger(ParentServiceImpl.class);
 
     @Autowired
     ParentRepository parentRepository;
@@ -23,12 +26,24 @@ public class ParentServiceImpl implements ParentService{
 
     @Override
     public void addParent(Parent parent) {
-        parentRepository.insert(parent);
+        try {
+            parentRepository.insert(parent);
+            logger.info("Successfully added Parent");
+        } catch (Exception ex) {
+            logger.warn("Failed to add new Parent", ex);
+            ex.printStackTrace();
+        }
     }
 
     @Override
     public void updateParent(Parent parent) {
-        parentRepository.save(parent);
+        try {
+            parentRepository.save(parent);
+            logger.info("Successfully updated Parent");
+        } catch ( Exception ex) {
+            logger.warn("Failed to update Parent information", ex);
+            ex.printStackTrace();
+        }
     }
 
     @Override

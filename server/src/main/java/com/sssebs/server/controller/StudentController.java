@@ -34,36 +34,17 @@ public class StudentController {
 
     @RequestMapping(method = RequestMethod.POST, value="/")
     public void addStudent(@RequestBody Student student) {
-        try {
             studentService.addStudent(student);
-            logger.info("Successfully added new Student");
-        } catch (Exception e) {
-            logger.warn("Failed to add new student", e);
-            e.printStackTrace();
-        }
-
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/")
     public void updateStudent(@RequestBody Student student){
-        try {
             studentService.updateStudent(student);
-            logger.info("Update Student Information: Success");
-        } catch (Exception e) {
-            logger.warn("Failed to update Student information", e);
-            e.printStackTrace();
-        }
     }
 
     @RequestMapping("/{studentId}")
     public Optional<Student> getStudent(@PathVariable String studentId) {
-        try {
             return studentService.getStudent(studentId);
-        }catch (Exception e) {
-            logger.warn("Student with id {} now found",studentId,e);
-            e.printStackTrace();
-        }
-        return null;
      }
 
     @RequestMapping("/page")

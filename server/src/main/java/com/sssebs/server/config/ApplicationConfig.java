@@ -1,7 +1,10 @@
 package com.sssebs.server.config;
 
+import com.sssebs.server.auth.AuthenticationService;
 import com.sssebs.server.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +20,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 @RequiredArgsConstructor
 public class ApplicationConfig {
-
+    private static Logger logger = LogManager.getLogger(ApplicationConfig.class);
     @Autowired
     private  UserRepository userRepository;
     @Bean

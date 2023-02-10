@@ -1,6 +1,8 @@
 package com.sssebs.server.service;
 
 import com.sssebs.server.model.DbSequence;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Update;
@@ -13,6 +15,7 @@ import java.util.Objects;
 
 @Service
 public class DbSequenceGeneratorService {
+    private static Logger logger = LogManager.getLogger(DbSequenceGeneratorService.class);
 
     @Autowired
     private MongoOperations mongoOperations;

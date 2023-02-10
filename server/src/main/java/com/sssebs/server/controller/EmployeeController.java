@@ -2,6 +2,8 @@ package com.sssebs.server.controller;
 
 import com.sssebs.server.model.Employee;
 import com.sssebs.server.service.EmployeeService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +14,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/v1/employees")
 public class EmployeeController {
+    private static Logger logger = LogManager.getLogger(EmployeeController.class);
     @Autowired
     EmployeeService employeeService;
     @GetMapping("/")
