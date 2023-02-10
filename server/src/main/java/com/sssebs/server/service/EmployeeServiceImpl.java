@@ -8,22 +8,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService{
-    private static Logger LOG = LogManager.getRootLogger();
+    private static Logger logger = LogManager.getLogger(EmployeeServiceImpl.class);
     @Autowired
     private EmployeeRepository employeeRepository;
 
 
     @Override
     public List<Employee> getAll() {
-
-        return employeeRepository.findAll();
+        List<Employee> employees = new ArrayList<>();
+        try {
+            employees = employeeRepository.findAll();
+        } catch (Exception ex) {
+            logger.warn("Failed to get employees", ex);
+            ex.printStackTrace();
+        }
+        return employees;
     }
 
     @Override
@@ -33,12 +36,25 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     @Override
     public void addEmployee(Employee employee) {
-        employeeRepository.insert(employee);
+        try {
+            employeeRepository.insert(employee);
+            logger.info("New Employee added");
+        } catch (Exception ex) {
+            logger.warn("Failed to add Employee", ex);
+            ex.printStackTrace();
+        }
     }
 
     @Override
     public void updateEmployee(Employee employee) {
-        employeeRepository.save(employee);
+        try {
+            employeeRepository.save(employee);
+            logger.info("Successfully updated Employee");
+        } catch (Exception ex) {
+            logger.warn("Failed tp update Employee", ex);
+            ex.printStackTrace();
+        }
+
     }
 
     @Override

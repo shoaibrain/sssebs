@@ -16,7 +16,7 @@ import java.util.Optional;
 
 @Service
 public class StudentServiceImpl implements StudentService{
-    private static Logger LOG = LogManager.getLogger(StudentServiceImpl.class);
+    private static Logger logger = LogManager.getLogger(StudentServiceImpl.class);
     @Autowired
     private StudentRepository studentRepository;
 
@@ -27,7 +27,7 @@ public class StudentServiceImpl implements StudentService{
         try {
             return studentRepository.findAll();
         } catch (Exception ex) {
-            LOG.warn("Failed to get students list", ex);
+            logger.warn("Failed to get students list", ex);
         }
         return null;
 
@@ -41,21 +41,21 @@ public class StudentServiceImpl implements StudentService{
     @Override
     public void addStudent(Student student) {
         try {
-            LOG.info("New Student added");
             studentRepository.insert(student);
+            logger.info("Successfully added new Student");
         } catch (Exception ex) {
-            LOG.warn("Failed to add new student", ex);
+            logger.warn("Failed to add new student", ex);
+            ex.printStackTrace();
         }
-
     }
 
     @Override
     public void updateStudent(Student student) {
         try {
-            LOG.info("Student Info updated");
             studentRepository.save(student);
+            logger.info("Student Info updated: Success");
         } catch (Exception ex) {
-            LOG.warn("Failed to update student information");
+            logger.warn("Failed to update student information");
         }
 
     }
@@ -72,10 +72,9 @@ public class StudentServiceImpl implements StudentService{
             response.put("Total Elements", studentPage.getTotalElements());
             response.put("Current Page", studentPage.getNumber());
         } catch (Exception ex) {
-            LOG.warn("Failed to get Student in Page", ex);
-        } finally {
-            return response;
+            logger.warn("Failed to get Student in Page", ex);
         }
+        return response;
 
     }
 
