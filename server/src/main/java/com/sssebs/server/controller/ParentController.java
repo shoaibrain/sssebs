@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1/auth/parents")
+@RequestMapping("/api/v1/parents")
 public class ParentController {
 
     @Autowired

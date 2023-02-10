@@ -9,7 +9,7 @@ public class Address {
     private String line2;
     private String city;
     private String zipCode;
-    private String phone;
+    private String phone; // phone required for some remote address
 
     public Address(String line1, String line2, String city, String zipCode, String phone) {
         this.line1 = line1;

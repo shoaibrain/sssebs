@@ -4,6 +4,7 @@ import com.sssebs.server.config.JwtService;
 import com.sssebs.server.model.Role;
 import com.sssebs.server.model.User;
 import com.sssebs.server.repository.UserRepository;
+import com.sssebs.server.service.DbSequenceGeneratorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,6 +18,8 @@ public class AuthenticationService {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private DbSequenceGeneratorService sequenceGeneratorService;
 
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
@@ -28,9 +31,9 @@ public class AuthenticationService {
                 .lastname(request.getLastname())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .role(Role.USER) // default role
+                .role(request.getRole())
                 .build();
-
+        user.setId(sequenceGeneratorService.generateSequence(User.SEQUENCE_NAME));
         userRepository.save(user);
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder()

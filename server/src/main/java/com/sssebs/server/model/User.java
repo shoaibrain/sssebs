@@ -1,8 +1,11 @@
 package com.sssebs.server.model;
 
 
+import com.sssebs.server.service.DbSequenceGeneratorService;
 import lombok.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -16,11 +19,18 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
+@EqualsAndHashCode
 @Document(collection = "_users")
 public class User implements UserDetails {
 
+    @Autowired
+    private DbSequenceGeneratorService dbSequenceGeneratorService;
+    @Transient
+    public static final String SEQUENCE_NAME = "user_sequence";
+
     @Id
-    private String id; //TODO get auto increment to work
+    private long id;
     private String firstname;
     private String lastname;
     private String email;
