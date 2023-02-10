@@ -21,7 +21,12 @@ public class ParentServiceImpl implements ParentService{
     ParentRepository parentRepository;
     @Override
     public List<Parent> getAll() {
-        return parentRepository.findAll();
+        try {
+            return parentRepository.findAll();
+        } catch (Exception ex) {
+            logger.warn("Failed to get parents list", ex);
+        }
+        return null;
     }
 
     @Override

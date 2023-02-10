@@ -19,5 +19,4 @@ public class Student extends User{
     private Address address;
     private Grade grade;
 
-
 }

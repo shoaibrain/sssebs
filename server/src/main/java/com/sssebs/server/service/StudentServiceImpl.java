@@ -73,9 +73,8 @@ public class StudentServiceImpl implements StudentService{
             response.put("Current Page", studentPage.getNumber());
         } catch (Exception ex) {
             logger.warn("Failed to get Student in Page", ex);
-        } finally {
-            return response;
         }
+        return response;
 
     }
 

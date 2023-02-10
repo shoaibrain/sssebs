@@ -33,7 +33,7 @@ public class AuthenticationService {
                 .lastname(request.getLastname())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .role(request.getRole())
+                .role((request.getRole() != null) ? request.getRole() : Role.USER)
                 .build();
         user.setId(sequenceGeneratorService.generateSequence(User.SEQUENCE_NAME));
         userRepository.save(user);

@@ -28,6 +28,7 @@ public class StudentController {
             logger.warn("Failed to get all students", ex);
             ex.printStackTrace();
         }
+        System.out.println(students.indexOf(1));
         return students;
     }
 

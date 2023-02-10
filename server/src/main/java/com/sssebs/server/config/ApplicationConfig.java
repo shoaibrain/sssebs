@@ -1,6 +1,5 @@
 package com.sssebs.server.config;
 
-import com.sssebs.server.auth.AuthenticationService;
 import com.sssebs.server.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
